@@ -53,7 +53,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REGISTRY_ALIAS: ${{ secrets.ECR_REGISTRY_ALIAS }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
-          IMAGE_TAG: ${{ steps.get-commit-hash.outputs.commit-hash }}-${{ steps.get-timestamp.outputs.timestamp }}
+          IMAGE_TAG: latest #${{ steps.get-commit-hash.outputs.commit-hash }}-${{ steps.get-timestamp.outputs.timestamp }}
         run: |
           echo $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
           docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
