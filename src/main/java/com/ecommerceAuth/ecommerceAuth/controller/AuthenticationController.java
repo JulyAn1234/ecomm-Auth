@@ -23,11 +23,11 @@ public class AuthenticationController {
     }
 
     @GetMapping("/health")
-    public ResponseEntity<LoginResponse> register() {
+    public ResponseEntity<String> register() {
 
-        return ResponseEntity.ok();
+        return ResponseEntity.ok("Authentication Service Working Properly");
     }
-    
+
     @PostMapping("/signup")
     public ResponseEntity<LoginResponse> register(@RequestBody RegisterUserDto registerUserDto) {
         User registeredUser = authenticationService.signup(registerUserDto);
