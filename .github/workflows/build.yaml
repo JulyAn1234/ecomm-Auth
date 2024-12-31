@@ -15,6 +15,7 @@ jobs:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           HOSTNAME: ${{secrets.SSH_HOST}}
           USER_NAME: ${{secrets.USER_NAME}}
+          SERVICE_NAME: ${{secrets.SERVICE_NAME}}
 
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
@@ -26,5 +27,8 @@ jobs:
               ls
               sudo docker-compose down
               yes | sudo docker image prune
-              sudo pwd
+              sudo docker-compose stop ${SERVICE_NAME}
+              sudo docker-compose rm -f ${SERVICE_NAME}
+              sudo docker-compose pull ${SERVICE_NAME}
+              sudo docker-compose up -d ${SERVICE_NAME}
               '
