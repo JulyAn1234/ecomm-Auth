@@ -1,4 +1,4 @@
-name: Push the Docker image to AWS ECR Repo
+name: run commands through ssh
 on:
   push:
     branches:
@@ -23,4 +23,5 @@ jobs:
               # Now we have got the access of EC2 and we will start the deploy .
               cd deployment
               sudo pwd
+              ls
               '
