@@ -24,5 +24,6 @@ jobs:
               cd deployment
               sudo pwd
               ls
+              sudo docker-compose down
               $echo "y" | sudo docker image prune
               '
