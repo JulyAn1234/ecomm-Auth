@@ -26,4 +26,5 @@ jobs:
               ls
               sudo docker-compose down
               $echo "y" | sudo docker image prune
+              sudo pwd
               '
