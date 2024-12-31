@@ -79,9 +79,6 @@ jobs:
               # The service is put down, the updated changes are pulled from ecr and then the the service
               # is started again
               cd deployment
-              sudo pwd
-              ls
-              sudo docker-compose down
               yes | sudo docker image prune
               sudo docker-compose stop ${SERVICE_NAME}
               sudo docker-compose rm -f ${SERVICE_NAME}
