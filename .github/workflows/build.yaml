@@ -58,3 +58,34 @@ jobs:
           echo $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
           docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
+  Deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build & Deploy
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{secrets.SSH_HOST}}
+          USER_NAME: ${{secrets.USER_NAME}}
+          SERVICE_NAME: ${{secrets.SERVICE_NAME}}
+
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} "
+
+              # EC2 instance can be sent commands here
+              # The service is put down, the updated changes are pulled from ecr and then the the service
+              # is started again
+              cd deployment
+              sudo pwd
+              ls
+              sudo docker-compose down
+              yes | sudo docker image prune
+              sudo docker-compose stop ${SERVICE_NAME}
+              sudo docker-compose rm -f ${SERVICE_NAME}
+              sudo docker-compose pull ${SERVICE_NAME}
+              sudo docker-compose up -d ${SERVICE_NAME}
+              "
+          
