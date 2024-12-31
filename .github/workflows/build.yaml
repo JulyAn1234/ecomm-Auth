@@ -61,7 +61,7 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-
+    needs: Build
     steps:
       - uses: actions/checkout@v2
       - name: Build & Deploy
