@@ -24,4 +24,5 @@ jobs:
               cd deployment
               sudo pwd
               ls
+              sudo docker image prune
               '
