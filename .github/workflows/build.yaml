@@ -89,14 +89,14 @@ jobs:
     name: Request Approval for Production Deployment
     uses: actions/github-script@v4
     with:
-          script: |
-            const { context, github } = require('@actions/github');
-            const issueTitle = 'Approve Upgrade To Production Deployment';
-            const issueBody = 'Please approve the creation of a pull request to merge release into main for production deployment (comment yes or no)';
-            const {  issue } = await github.issues.create({
-              ...context.repo,
-              title: issueTitle,
-              body: issueBody,
-              labels: ['approval-needed']
-            });
-            core.setOutput('issue-url', issue.html_url);
+      script: |
+        const { context, github } = require('@actions/github');
+        const issueTitle = 'Approve Upgrade To Production Deployment';
+        const issueBody = 'Please approve the creation of a pull request to merge release into main for production deployment (comment yes or no)';
+        const {  issue } = await github.issues.create({
+          ...context.repo,
+          title: issueTitle,
+          body: issueBody,
+          labels: ['approval-needed']
+        });
+        core.setOutput('issue-url', issue.html_url);
