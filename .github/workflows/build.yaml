@@ -106,6 +106,7 @@ jobs:
           title: Update Changelog
           body: Update changelog to reflect release changes
           base: main
+          branch: ${{ github.ref }}
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
