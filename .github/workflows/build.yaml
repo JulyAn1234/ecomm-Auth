@@ -101,4 +101,4 @@ jobs:
               body: issueBody,
               labels: ['approval-needed']
             });
-            core.setOutput('issue-url', issue.html_url);
+#            core.setOutput('issue-url', issue.html_url);
