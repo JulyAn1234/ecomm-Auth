@@ -93,7 +93,6 @@ jobs:
         uses: actions/github-script@v4
         with:
           script: |
-            const { github } = require('@actions/github');
             const issueTitle = 'Approve Upgrade To Production Deployment';
             const issueBody = 'Please approve the creation of a pull request to merge release into main for production deployment (comment yes or no)';
             const {  issue } = await github.issues.create({
