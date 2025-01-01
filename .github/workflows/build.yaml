@@ -89,13 +89,8 @@ jobs:
     name: Upgrade
     runs-on: ubuntu-latest
     steps:
-      - uses: macnev2013/manual-approval@latest
+      - name: Wait approval
+        uses: keepbang/issue-approval@v1.0.4
         with:
-          secret: ${{ github.TOKEN }}
+          secret-token: ${{ secrets.GIT_TOKEN }}
           approvers: JulyAn1234
-          minimum-approvals: 1
-          approval-wait: 600
-          issue-title: 'Manual Approval'
-          issue-body: |
-            "Issue Body"
-            
