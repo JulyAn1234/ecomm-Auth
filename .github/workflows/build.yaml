@@ -45,7 +45,7 @@ jobs:
         run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M')"
 
       - name: Build the project
-        run: mvn clean install  # Build the Java project with Maven
+        run: mvn clean verify  # Build the Java project with Maven
 
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
