@@ -96,13 +96,11 @@ jobs:
           secret-token: ${{ secrets.GIT_TOKEN }}
           approvers: JulyAn1234
 
-      - name: Run the Action
-        uses: devops-infra/action-pull-request@v0.5.5
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
         with:
-          github_token: ${{ secrets.GIT_TOKEN }}
-          target_branch: main
-          title: Pull Request to main (production env)
-
+          token: ${{ secrets.GIT_TOKEN }}
+          branch: main
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
