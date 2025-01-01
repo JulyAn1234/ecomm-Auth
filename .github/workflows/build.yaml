@@ -89,16 +89,13 @@ jobs:
     name: Upgrade
     runs-on: ubuntu-latest
     steps:
-      - name: Request Approval for Production Deployment
-        uses: actions/github-script@v4
+      - uses: macnev2013/manual-approval@latest
         with:
-          script: |
-            const issueTitle = 'Approve Upgrade To Production Deployment';
-            const issueBody = 'Please approve the creation of a pull request to merge release into main for production deployment (comment yes or no)';
-            const {  issue } = await github.issues.create({
-              ...context.repo,
-              title: issueTitle,
-              body: issueBody,
-              labels: ['approval-needed']
-            });
-#            core.setOutput('issue-url', issue.html_url);
+          secret: ${{ github.TOKEN }}
+          approvers: JulyAn1234
+          minimum-approvals: 1
+          approval-wait: 600
+          issue-title: 'Manual Approval'
+          issue-body: |
+            "Issue Body"
+            
