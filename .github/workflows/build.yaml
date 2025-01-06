@@ -103,6 +103,10 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GIT_TOKEN }}
+          commit-message: update main
+          title: Update main
+          body: main
+          branch: main
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
