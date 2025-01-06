@@ -1,12 +1,17 @@
-name: Push the Docker image to AWS ECR Repo
+name: Release to production
+
+# Run Job when a pull request is merged into main
 on:
-  push:
+  pull_request:
+    types: [closed]  # Trigger when PR is merged
     branches:
       - main
 jobs:
   Build:
     name: Build docker image, test and push to ECR repository
     runs-on: ubuntu-latest
+#    Only run when the merge branch is not a release branch
+    if: github.event.pull_request.merged == true && !startsWith(github.event.pull_request.head.ref, 'release/')
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -67,7 +72,7 @@ jobs:
       - name: Build & Deploy
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOSTNAME: ${{secrets.SSH_HOST_QA}}
+          HOSTNAME: ${{secrets.SSH_HOST_PROD}}
           USER_NAME: ${{secrets.USER_NAME}}
           SERVICE_NAME: ${{secrets.SERVICE_NAME}}
 
