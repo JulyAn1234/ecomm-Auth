@@ -74,9 +74,11 @@ jobs:
           echo $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
           docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
-  Deploy_QA:
-    name: Deploy to QA environment
+  Deploy_PROD:
+    name: Deploy to PROD environment
     runs-on: ubuntu-latest
+    needs: Build
+    if: ${{ !failure() && !cancelled() }}
     steps:
       - uses: actions/checkout@v2
       - name: Build & Deploy
@@ -100,17 +102,3 @@ jobs:
               sudo docker-compose pull ${SERVICE_NAME}
               sudo docker-compose up -d ${SERVICE_NAME}
               "
-#  Upgrade:
-#    name: Upgrade
-#    runs-on: ubuntu-latest
-##    needs: Deploy_QA
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#
-##      - name: Wait approval
-##        uses: keepbang/issue-approval@v1.0.4
-##        with:
-##          secret-token: ${{ secrets.GIT_TOKEN }}
-##          approvers: JulyAn1234
-#
