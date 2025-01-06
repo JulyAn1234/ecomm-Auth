@@ -102,10 +102,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: update changelog
-          title: Update Changelog
-          body: Update changelog to reflect release changes
-          branch: main
+          token: ${{ secrets.GIT_TOKEN }}
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
