@@ -98,7 +98,7 @@ jobs:
               sudo docker-compose stop ${SERVICE_NAME}
               sudo docker-compose rm -f ${SERVICE_NAME}
               sudo docker-compose pull ${SERVICE_NAME}
-              sudo docker-compose up -d ${SERVICE_NAME}
+              sudo docker-compose up -d ${SERVICE_NAME} 
               "
 #  Upgrade:
 #    name: Upgrade
