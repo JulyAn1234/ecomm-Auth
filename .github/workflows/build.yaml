@@ -103,11 +103,14 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GIT_TOKEN }}
-          commit-message: update main
-          title: Update main
-          body: main
-          branch: main2
-          reviewers: JulyAn1234
+          branch: "testing_branch"
+          base: release/testing
+          title: "PR to main"
+          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
+          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
+          body:
+            this is an automatic PR
+          delete-branch: true
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
