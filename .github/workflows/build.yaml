@@ -2,7 +2,7 @@ name: Push the Docker image to AWS ECR Repo
 on:
   push:
     branches:
-      - main
+      - release/*
 jobs:
   Build:
     name: Build docker image, test and push to ECR repository
