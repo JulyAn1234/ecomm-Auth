@@ -99,6 +99,9 @@ jobs:
           secret-token: ${{ secrets.GIT_TOKEN }}
           approvers: JulyAn1234
 
+      - name: Extract commit data
+        uses: rlespinasse/git-commit-data-action@v1
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
