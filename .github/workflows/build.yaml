@@ -93,11 +93,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Wait approval
-        uses: keepbang/issue-approval@v1.0.4
-        with:
-          secret-token: ${{ secrets.GIT_TOKEN }}
-          approvers: JulyAn1234
+#      - name: Wait approval
+#        uses: keepbang/issue-approval@v1.0.4
+#        with:
+#          secret-token: ${{ secrets.GIT_TOKEN }}
+#          approvers: JulyAn1234
 
       - name: Extract commit data
         uses: rlespinasse/git-commit-data-action@v1
