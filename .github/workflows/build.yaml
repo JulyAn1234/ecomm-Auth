@@ -107,6 +107,7 @@ jobs:
           title: Update main
           body: main
           branch: main
+          reviewers: JulyAn1234
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
