@@ -7,6 +7,17 @@ on:
     branches:
       - main
 jobs:
+  Check:
+    name: check variables
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo variables
+        id: get-commit-hash
+        run: echo ${{ github.event.pull_request.merged }} ${{ github.event.pull_request.head.ref }}
+
   Build:
     name: Build docker image, test and push to ECR repository
     runs-on: ubuntu-latest
