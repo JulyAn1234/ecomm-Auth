@@ -106,8 +106,8 @@ jobs:
           branch: "testing_branch"
           base: release/testing
           title: "PR to main"
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
+          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} "l20211790@tectijuana.edu.mx"
+          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} "l20211790@tectijuana.edu.mx"
           body:
             this is an automatic PR
           delete-branch: true
