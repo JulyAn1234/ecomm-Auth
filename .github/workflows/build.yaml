@@ -106,14 +106,14 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GIT_TOKEN }}
-          branch: main
-          base: release/testing
+          branch: release/testing
+          base: main
           title: "PR to main"
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} < ${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} < ${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           body:
             this is an automatic PR
-          delete-branch: true
+          delete-branch: false
 #      - uses: actions/checkout@v2
 #      - name: Deploy to production environment
 #        env:
