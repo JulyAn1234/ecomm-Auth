@@ -85,17 +85,3 @@ jobs:
               sudo docker-compose pull ${SERVICE_NAME}
               sudo docker-compose up -d ${SERVICE_NAME}
               "
-#  Upgrade:
-#    name: Upgrade
-#    runs-on: ubuntu-latest
-##    needs: Deploy_QA
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#
-##      - name: Wait approval
-##        uses: keepbang/issue-approval@v1.0.4
-##        with:
-##          secret-token: ${{ secrets.GIT_TOKEN }}
-##          approvers: JulyAn1234
-#
